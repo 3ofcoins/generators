@@ -1,0 +1,5 @@
+require "<%= name %>/version"
+
+module <%= camel_name %>
+  # Your code goes here...
+end
