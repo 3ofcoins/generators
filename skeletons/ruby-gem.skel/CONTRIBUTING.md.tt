@@ -23,13 +23,11 @@ or greater installed.  If in doubt, just use [http://rvm.io/](RVM) or
 
     $ gem install bundler
 
-
 Clone the project:
 
     $ git clone git://github.com/<%= git_config('github.username') %>/<%= name %>.git
 
 Then, run:
-
 
     $ cd <%= name %>
     $ bundle install
