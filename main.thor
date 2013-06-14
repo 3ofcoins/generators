@@ -8,10 +8,6 @@ class Skel < Thor
   attr_reader :name, :snake_name, :camel_name, :title_name
   source_root Pathname.new(__FILE__).dirname.join('skeletons').realpath
 
-  def git_config(var)
-    MiniGit::Capturing.config(var).strip
-  end
-
   source_root.each_child do |skel_path|
     next unless skel_path.fnmatch? '*.skel'
     skel_name = skel_path.basename('.skel').to_s
@@ -35,6 +31,12 @@ class Skel < Thor
         say_status 'git', "remote add origin #{repo_url}"
         git.remote :add, 'origin', repo_url
       end
+    end
+  end
+
+  no_commands do
+    def git_config(var)
+      MiniGit::Capturing.config(var).strip
     end
   end
 end
