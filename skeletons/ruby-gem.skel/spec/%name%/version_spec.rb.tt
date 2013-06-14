@@ -5,7 +5,7 @@ require 'spec_helper'
 module <%= camel_name %>
   describe VERSION do
     it 'is equal to itself' do
-      assert { VERSION == <%= camel_name %>::VERSION }
+      expect { VERSION == <%= camel_name %>::VERSION }
     end
   end
 end

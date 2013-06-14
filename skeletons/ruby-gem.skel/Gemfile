@@ -6,7 +6,6 @@ gemspec
 # time, or for tests.
 group :development do
   gem 'awesome_print'
-  gem 'minitest-ansi'
   gem 'pry'
   gem 'pry-debugger'
   gem 'pry-rescue'

@@ -23,23 +23,14 @@ class Skel < Thor
       @snake_name = name.downcase.split(/[^a-z0-9]+/).join('_')
       @camel_name = Thor::Util.camel_case(snake_name)
       @title_name = snake_name.split('_').map(&:capitalize).join(' ')
-      directory skel_path, target_path
+      directory skel_path, target_path, :exclude_pattern => /~$/
 
       if target_path.join('.git').exist?
         say_status 'git', '(repository already exists)', :blue
-        git = MiniGit.new(target_path)
       else
         say_status 'git', "init #{target_path}"
         MiniGit.init(target_path)
-      end
-
-      git = MiniGit.new(target_path)
-      say_status 'git', 'clean -fX'
-      git.clean :f => true, :X => true
-
-      if git.capturing.remote.split.include?('origin')
-        say_status 'git', '(remote origin exists)', :blue
-      else
+        git = MiniGit.new(target_path)
         repo_url = "git@github.com:#{git.capturing.config('github.username')}/#{name}.git"
         say_status 'git', "remote add origin #{repo_url}"
         git.remote :add, 'origin', repo_url

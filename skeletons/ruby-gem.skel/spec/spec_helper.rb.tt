@@ -1,18 +1,14 @@
 require 'rubygems'
 require 'bundler/setup'
 
-require 'minitest/spec'
 require 'minitest/autorun'
+require 'minitest/spec'
 require 'mocha/setup'
 require 'wrong'
 require 'wrong/adapters/minitest'
 
-begin
-  require 'minitest/ansi'
-rescue LoadError                # that's fine, we'll live without it
-else
-  MiniTest::ANSI.use! if STDOUT.tty?
-end
+Wrong.config.alias_assert :expect, override: true
+include Wrong
 
 if ENV['COVERAGE']
   require 'simplecov'
