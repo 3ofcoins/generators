@@ -30,4 +30,10 @@ class Gen < Thor
       end
     end
   end
+
+  no_commands do
+    def git_config(var)
+      MiniGit::Capturing.config(var).strip
+    end
+  end
 end
