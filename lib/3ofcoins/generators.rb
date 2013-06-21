@@ -3,10 +3,11 @@
 require 'minigit'
 require 'pathname'
 
-class Skel < Thor
+class Gen < Thor
   include Thor::Actions
   attr_reader :name, :snake_name, :camel_name, :title_name
-  source_root Pathname.new(__FILE__).dirname.join('skeletons').realpath
+  source_root Pathname.new(__FILE__).
+    dirname.dirname.dirname.join('skeletons').realpath
 
   source_root.each_child do |skel_path|
     next unless skel_path.fnmatch? '*.skel'
@@ -22,21 +23,11 @@ class Skel < Thor
       directory skel_path, target_path, :exclude_pattern => /~$/
 
       if target_path.join('.git').exist?
-        say_status 'git', '(repository already exists)', :blue
+        say_status 'git', 'Repository already exists.', :blue
       else
         say_status 'git', "init #{target_path}"
         MiniGit.init(target_path)
-        git = MiniGit.new(target_path)
-        repo_url = "git@github.com:#{git.capturing.config('github.username')}/#{name}.git"
-        say_status 'git', "remote add origin #{repo_url}"
-        git.remote :add, 'origin', repo_url
       end
-    end
-  end
-
-  no_commands do
-    def git_config(var)
-      MiniGit::Capturing.config(var).strip
     end
   end
 end
