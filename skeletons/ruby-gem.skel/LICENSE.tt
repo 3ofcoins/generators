@@ -1,6 +1,4 @@
-Copyright (c) <%= Time.now.year %> Maciej Pasternacki <maciej@3ofcoins.net>
-
-MIT License
+Copyright (C) <%= Time.now.year %> <%= git_config('user.name') %> <<%= git_config('user.email') %>>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
