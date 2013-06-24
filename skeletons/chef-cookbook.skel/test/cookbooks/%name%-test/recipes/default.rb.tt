@@ -1,0 +1,2 @@
+include_recipe <%= name.inspect %>
+chef_gem 'wrong'

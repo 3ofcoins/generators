@@ -1,0 +1,21 @@
+<%= name %> cookbook
+<%= name.gsub(/./, '=') %>=========
+
+This cookbook's home is at https://github.com/<%= git_config('github.username') %>/<%= name %>/
+
+Requirements
+------------
+
+Usage
+-----
+
+Attributes
+----------
+
+Recipes
+-------
+
+Author
+------
+
+Author:: <%= git_config('user.name') %> <<%= git_config('user.email') %>>

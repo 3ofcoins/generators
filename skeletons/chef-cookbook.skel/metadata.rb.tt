@@ -1,0 +1,8 @@
+name             <%= name.inspect %>
+maintainer       <%= git_config('user.name').inspect %>
+maintainer_email <%= git_config('user.email').inspect %>
+license          'MIT'
+description      <%= title_name.inspect %>
+long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
+version          '0.1.0'
+
