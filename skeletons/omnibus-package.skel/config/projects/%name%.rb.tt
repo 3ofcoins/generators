@@ -1,0 +1,20 @@
+name "<%= name %>"
+maintainer "<%= git_config('user.name') %> <<%= git_config('user.email').inspect %>>"
+homepage "https://github.com/<%= git_config('github.username') %>/<%= name %>/"
+
+replaces        "<%= name %>"
+install_path    "/opt/<%= name %>"
+build_version   Omnibus::BuildVersion.new.semver
+build_iteration 1
+
+# creates required build directories
+dependency "preparation"
+
+# <%= name %> dependencies/components
+# dependency "somedep"
+
+# version manifest file
+dependency "version-manifest"
+
+exclude "\.git*"
+exclude "bundler\/git"

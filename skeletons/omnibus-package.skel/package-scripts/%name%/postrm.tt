@@ -1,0 +1,9 @@
+#!/bin/bash
+#
+# Perform necessary <%= name %> removal steps
+# after package is uninstalled.
+#
+
+echo "<%= name %> has been uninstalled!"
+
+exit 0
